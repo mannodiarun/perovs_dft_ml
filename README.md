@@ -1,1 +1,7 @@
 # perovs_dft_ml
+
+This project uses high-throughput density functional theory (DFT) data on halide perovskite alloys to train predictive machine learning (ML) models using a variety of regression algorithms for properties of interest and perform multi-objective inverse design using genetic algorithm (GA).
+
+DFT calculations are performed at two levels of theory: GGA-PBE (494 data points, referred to as PBE henceforth) and HSE06 (244 data points, referred to as HSE henceforth). DFT data can be read from the Data.xlsx file. Three properties are computed: the decomposition energy (in eV per formula unit), the band gap (in eV), and the spectroscopic limited maximum efficiency (SLME, in fraction, indicating a theoretical limit for photovoltaic power conversion efficiency). Every data point or compound is identified using an Index and a Formula. Two types of input descriptors are defined (to be used for training input -> output predictive models): a composition vector (14 dim) and a elemental properties vector (36 dim). The data is split in 3 sheets: PBE only, HSE only, and PBE+HSE (which combines the two data types using a one-hot encoded vector as additional descriptor to identiy data type).
+
+The notebook "DFT-ML.ipynb" calls relevant python packages, reads the DFT data, performs some visualization, and then has different sections for a variety of ML treatments including principal component analysis (PCA), elasticnet regression, random forest regression, kernel ridge regression, and genetic algorithm.
